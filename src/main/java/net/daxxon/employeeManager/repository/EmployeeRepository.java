@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +37,7 @@ public class EmployeeRepository {
   void update(Employee employee) {
     jdbcTemplate.update(UPDATE_SQL, employee.getFirstName(), employee.getLastName(), employee.getId());
   }
+
 
   private final String DELETE_SQL = "delete from employees where id=?";
   void delete(int id) {

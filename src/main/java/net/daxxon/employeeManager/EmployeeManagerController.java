@@ -1,9 +1,7 @@
 package net.daxxon.employeeManager;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import net.daxxon.employeeManager.employee.Employee;
+import net.daxxon.employeeManager.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +14,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class EmployeeManagerController {
 
-  @RequestMapping("/")
-  public String index(Model model) {
-    return "index";
+  @Autowired
+  private EmployeeService employeeService;
+
+  private ObjectMapper objectMapper = new ObjectMapper();
+
+  @PostMapping("/api/employee")
+  public String addEmployee(@RequestBody String json) throws IOException {
+    Employee employee = objectMapper.readValue(json, Employee.class);
+    employeeService.add(employee);
+
+    return "ok";
   }
+
+  @PutMapping("/api/employee/{id")
+
+
 }
