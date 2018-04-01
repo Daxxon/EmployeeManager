@@ -6,6 +6,15 @@
     <title>Employee Management Web Portal</title>
 </head>
 <body>
-<p>Dummy Page</p>
+    <h1>Welcome to the test page!</h1>
+    <p>This page exists to add employees to the database</p>
+    <br/>
+    <form action="/api/add/employee" method="post">
+        <input type="text" name="firstName" placeholder="Employee's First Name" autoFocus="true"/>
+        <input type="text" name="lastName" placeholder="Employee's Last Name"/>
+        <input type="text" name="position" placeholder="Employee's Position"/>
+        <button>Submit</button>
+    </form>
+
 </body>
 </html>
