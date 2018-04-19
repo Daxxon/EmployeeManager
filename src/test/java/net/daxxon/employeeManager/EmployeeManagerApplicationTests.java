@@ -1,5 +1,7 @@
 package net.daxxon.employeeManager;
 
+import net.daxxon.employeeManager.repository.EmployeeRepository;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

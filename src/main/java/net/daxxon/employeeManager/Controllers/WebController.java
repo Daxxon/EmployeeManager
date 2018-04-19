@@ -17,5 +17,10 @@ public class WebController {
   public String home(Model model) {
     return "home";
   }
+
+  @GetMapping("/api/add/employee")
+  public String redirectHome(Model model) {
+    return "redirect:home";
+  }
 }
 
