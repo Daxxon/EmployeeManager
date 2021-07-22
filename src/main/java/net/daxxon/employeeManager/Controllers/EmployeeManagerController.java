@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
-@RestController
+@Controller
 public class EmployeeManagerController {
 
   @Autowired
   private EmployeeRepository employeeRepository;
 
-  @PostMapping(value = "/api/add/employee", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-  public @ResponseBody void addEmployee(Employee employee) throws IOException {
+  @PostMapping("/api/add/employee")
+  public String addEmployee(Model model, Employee employee) throws IOException {
     employeeRepository.save(employee);
+    return "home";
   }
 
-  @RequestMapping("/api/list/employees")
+  @GetMapping("/api/list/employees")
   public Iterable<Employee> list() throws IOException {
     return employeeRepository.findAll();
   }
